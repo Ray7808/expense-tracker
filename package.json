@@ -6,12 +6,13 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "standard && node app.js"
+    "test": "standard app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.2"
   },
