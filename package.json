@@ -14,7 +14,9 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.2"
+    "express-handlebars": "^4.0.2",
+    "mongodb": "^3.5.7",
+    "mongoose": "^7.0.2"
   },
   "devDependencies": {
     "standard": "^17.0.0"
