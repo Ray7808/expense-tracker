@@ -10,6 +10,9 @@ const port = process.env.PORT || 3000
 app.engine('hbs', exhbs({ defaultLayout: 'main', extname: 'hbs' }))
 app.set('view engine', 'hbs')
 
+// middleware
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.render('index')
 })
