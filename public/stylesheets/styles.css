@@ -1,7 +1,4 @@
-header {
-  overflow: hidden;
-}
-
+/* Navbar */
 .navbar .navbar-brand {
   color: #262829;
 }
@@ -10,25 +7,26 @@ header {
   color: #226c9d;
 }
 
+/* index page */
+.total__num > h5 {
+  color: orange;
+  font-size: 5rem;
+  font-weight: 400;
+}
+.spend__item:nth-child(odd) > .spend__item__content {
+  background-color: #e6e4e4;
+}
+
+.spend__item__content {
+  width: 60vw;
+}
+
+.spend__item__link > a {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
 /* 測試用 */
 .test {
   outline: 3px solid tomato;
-}
-
-@media screen and (max-width: 992px) {
-  .card img {
-    height: 115px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .restaurant-show-title {
-    font-size: 2rem;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .card img {
-    height: auto;
-  }
 }

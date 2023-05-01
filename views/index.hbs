@@ -1,1 +1,93 @@
-<h1>This is index page</h1>
+<main class='d-flex flex-column align-items-center'>
+  {{! 類別 }}
+  <div class='dropdown p-3'>
+    <a
+      class='btn dropdown-toggle px-5 d-flex align-items-center container-fluid'
+      href='/'
+      role='button'
+      data-bs-toggle='dropdown'
+      aria-expanded='false'
+    >
+      <div class='dropdown__content'>類別</div>
+    </a>
+    <ul class='dropdown-menu'>
+      <li><a class='dropdown-item' href='/'>家居物業</a></li>
+      <li><a class='dropdown-item' href='/'>交通出行</a></li>
+      <li><a class='dropdown-item' href='/'>休閒娛樂</a></li>
+      <li><a class='dropdown-item' href='/'>餐飲食品</a></li>
+      <li><a class='dropdown-item' href='/'>其他</a></li>
+    </ul>
+  </div>
+
+  {{! 總金額 }}
+  <div class='total__num d-flex p-2'>
+    <h2>總金額：</h2>
+    <h5>25260</h5>
+  </div>
+
+  {{! 各項花費(類別、日期、金額) }}
+  <div class='spend__item container d-flex justify-content-between align-items-center'>
+    <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
+      <div class='spend__item__content__desc d-flex flex-row align-items-center'>
+        <div class='spend__item__content__desc__img ps-3'>
+          <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i>
+        </div>
+
+        <div class='spend__item__content__desc p-2'>
+          <h4>午餐</h4>
+          <p>2019/04/23</p>
+        </div>
+      </div>
+
+      <div class='spend__item__content__number pe-3'>
+        <h6>60</h6>
+      </div></div>
+    <div class='spend__item__link p-3'>
+      <a href='/' class='link-dark'>修改</a>
+      <a href='/' class='link-dark'>刪除</a>
+    </div>
+  </div>
+
+  <div class='spend__item container d-flex justify-content-between align-items-center'>
+    <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
+      <div class='spend__item__content__desc d-flex flex-row align-items-center'>
+        <div class='spend__item__content__desc__img ps-3'>
+          <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i>
+        </div>
+
+        <div class='spend__item__content__desc p-2'>
+          <h4>午餐</h4>
+          <p>2019/04/23</p>
+        </div>
+      </div>
+
+      <div class='spend__item__content__number pe-3'>
+        <h6>60</h6>
+      </div></div>
+    <div class='spend__item__link p-3'>
+      <a href='/' class='link-dark'>修改</a>
+      <a href='/' class='link-dark'>刪除</a>
+    </div>
+  </div><div class='spend__item container d-flex justify-content-between align-items-center'>
+    <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
+      <div class='spend__item__content__desc d-flex flex-row align-items-center'>
+        <div class='spend__item__content__desc__img ps-3'>
+          <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i>
+        </div>
+
+        <div class='spend__item__content__desc p-2'>
+          <h4>午餐</h4>
+          <p>2019/04/23</p>
+        </div>
+      </div>
+
+      <div class='spend__item__content__number pe-3'>
+        <h6>60</h6>
+      </div></div>
+    <div class='spend__item__link p-3'>
+      <a href='/' class='link-dark'>修改</a>
+      <a href='/' class='link-dark'>刪除</a>
+    </div>
+  </div>
+
+</main>
