@@ -26,6 +26,28 @@
   font-size: 1.2rem;
 }
 
+/* new page */
+.form__content__desc > label:before {
+  content: '*';
+  color: red;
+}
+.form__content__desc > label {
+  font-size: 0.6rem;
+}
+.form__content__desc > div {
+  text-align: center;
+}
+
+.form__content__content > label:first-child:after {
+  content: '*';
+  color: red;
+}
+
+/* all-page */
+.btn__border {
+  border: black 2px solid;
+}
+
 /* 測試用 */
 .test {
   outline: 3px solid tomato;
