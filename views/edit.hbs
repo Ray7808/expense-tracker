@@ -1,1 +1,38 @@
-<h1>This is edit page</h1>
+<form action='/' method='POST' class='container p-3 d-flex flex-column form__content'>
+  <div class='mb-3 d-flex align-items-center form__content__desc'>
+    <label for='inputName' class='px-2 flex-shrink-0'>必填欄位</label>
+    <div class='flex-grow-1'>請修改你的支出</div>
+  </div>
+
+  <div class='mb-3 d-flex align-items-center form__content__content'>
+    <label for='inputName' class='form-label ps-2 flex-shrink-0'>名稱</label>
+    <label for='inputName' class='form-label pe-2 flex-shrink-0'>：</label>
+    <input type='text' class='form-control' name='name' id='inputName' aria-describedby='emailHelp' required />
+  </div>
+
+  <div class='mb-3 d-flex align-items-center form__content__content'>
+    <label for='inputDate' class='form-label flex-shrink-0 ps-2'>日期</label>
+    <label for='inputDate' class='form-label flex-shrink-0 pe-2'>：</label>
+    <input type='month' class='form-control' name='date' id='inputDate' aria-describedby='emailHelp' required />
+  </div>
+
+  <div class='mb-3 d-flex align-items-center form__content__content'>
+    <label for='inputCategory' class='form-label flex-shrink-0 ps-2'>類別</label>
+    <label for='inputCategory' class='form-label flex-shrink-0 pe-2'>：</label>
+    <select class='form-select' aria-label='select a category' id='inputCategory' required>
+      <option value='1'>家居物業</option>
+      <option value='2'>交通出行</option>
+      <option value='3'>休閒娛樂</option>
+      <option value='4'>餐飲食品</option>
+      <option value='5'>其他</option>
+    </select>
+  </div>
+
+  <div class='mb-3 d-flex align-items-center form__content__content'>
+    <label for='inputMoney' class='form-label flex-shrink-0 ps-2'>金額</label>
+    <label for='inputMoney' class='form-label flex-shrink-0 pe-2'>：</label>
+    <input type='number' class='form-control' name='money' id='inputMoney' aria-describedby='moneyHelp' required />
+  </div>
+
+  <button type='submit' class='btn btn-primary form__content__button'>送出</button>
+</form>
