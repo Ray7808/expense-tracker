@@ -1,8 +1,8 @@
-const recordInfo = require('../recordSpend')
+// const recordInfo = require('../recordSpend')
 const userInfo = require('../user')
 const db = require('../../config/mongoose')
 const bcrypt = require('bcryptjs')
-const expenseInfo = require('./seedInfo.json')
+const expenseInfo = require('./seedUserInfo.json')
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -25,22 +25,10 @@ db.once('open', () => {
     .then((salt) => bcrypt.hash(SEED_USER_1.password, salt))
     .then((hash) =>
       userInfo.create({
+        name: SEED_USER_1.name,
         email: SEED_USER_1.email,
         password: hash,
       })
     )
-    .then((user1) => {
-      const userId = user1._id
-      return Promise.all(
-        Array.from({ length: 2 }, (_, i) =>
-          recordInfo.create({
-            name: `${expenseInfo.results[i].name}`,
-            date: `${expenseInfo.results[i].date}`,
-            amount: `${expenseInfo.results[i].amount}`,
-            userId: userId,
-            categoryId: `${expenseInfo.results[i].categoryId}`,
-          })
-        )
-      )
-    })
+  console.log('done!')
 })
