@@ -1,5 +1,7 @@
 const express = require('express')
 const exhbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const routes = require('./routes')
 
 require('./config/mongoose')
@@ -13,6 +15,8 @@ app.set('view engine', 'hbs')
 
 // middleware
 app.use(express.static('public'))
+app.use(bodyParser.urlencoded({ extended: true })) //拿到瀏覽器回傳的資料
+app.use(methodOverride('_method'))
 
 app.use(routes)
 

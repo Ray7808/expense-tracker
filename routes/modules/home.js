@@ -12,5 +12,13 @@ router.get('/new', (req, res) => {
 router.get('/edit', (req, res) => {
   res.render('edit')
 })
+router.post('/new', (req, res) => {
+  console.log(req.body)
+  res.redirect('/')
+})
+router.post('/edit', (req, res) => {
+  console.log(req.body)
+  res.redirect('/')
+})
 
 module.exports = router
