@@ -1,5 +1,6 @@
 const express = require('express')
 const exhbs = require('express-handlebars')
+const routes = require('./routes')
 
 require('./config/mongoose')
 
@@ -13,17 +14,7 @@ app.set('view engine', 'hbs')
 // middleware
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-  res.render('index')
-})
-
-app.get('/new', (req, res) => {
-  res.render('new')
-})
-
-app.get('/edit', (req, res) => {
-  res.render('edit')
-})
+app.use(routes)
 
 app.listen(port, () => {
   console.log(`Now listening http://localhost:${port}`)
