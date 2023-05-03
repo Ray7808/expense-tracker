@@ -16,74 +16,35 @@
   {{! 總金額 }}
   <div class='total__num d-flex p-2'>
     <h2>總金額：</h2>
-    <h5>25260</h5>
+    <h5>{{totalAmount}}</h5>
   </div>
 
   {{! 各項花費(類別、日期、金額) }}
-  <div class='spend__item container d-flex justify-content-between align-items-center'>
-    <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
-      <div class='spend__item__content__desc d-flex flex-row align-items-center'>
-        <div class='spend__item__content__desc__img ps-3'>
-          <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i>
+  {{#each expense}}
+    <div class='spend__item container d-flex justify-content-between align-items-center'>
+      <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
+        <div class='spend__item__content__desc d-flex flex-row align-items-center'>
+          <div class='spend__item__content__desc__img ps-3'>
+            {{! <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i> }}
+            <i class='{{this.categoryClass}} fa-2xl' style='color: #53afc6;'></i>
+
+          </div>
+
+          <div class='spend__item__content__desc p-2'>
+            <h4>{{this.name}}</h4>
+            <p>{{this.date}}</p>
+          </div>
         </div>
 
-        <div class='spend__item__content__desc p-2'>
-          <h4>午餐</h4>
-          <p>2019/04/23</p>
-        </div>
+        <div class='spend__item__content__number pe-3'>
+          <h6>{{this.amount}}</h6>
+        </div></div>
+      <div class='spend__item__link p-3'>
+        <a href='/{{this._id}}/edit' class='link-dark'>修改</a>
+        <a href='/{{this._id}}/delete' class='link-dark'>刪除</a>
       </div>
-
-      <div class='spend__item__content__number pe-3'>
-        <h6>60</h6>
-      </div></div>
-    <div class='spend__item__link p-3'>
-      <a href='/edit' class='link-dark'>修改</a>
-      <a href='/delete' class='link-dark'>刪除</a>
     </div>
-  </div>
-
-  <div class='spend__item container d-flex justify-content-between align-items-center'>
-    <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
-      <div class='spend__item__content__desc d-flex flex-row align-items-center'>
-        <div class='spend__item__content__desc__img ps-3'>
-          <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i>
-        </div>
-
-        <div class='spend__item__content__desc p-2'>
-          <h4>午餐</h4>
-          <p>2019/04/23</p>
-        </div>
-      </div>
-
-      <div class='spend__item__content__number pe-3'>
-        <h6>60</h6>
-      </div></div>
-    <div class='spend__item__link p-3'>
-      <a href='/' class='link-dark'>修改</a>
-      <a href='/' class='link-dark'>刪除</a>
-    </div>
-  </div><div class='spend__item container d-flex justify-content-between align-items-center'>
-    <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
-      <div class='spend__item__content__desc d-flex flex-row align-items-center'>
-        <div class='spend__item__content__desc__img ps-3'>
-          <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i>
-        </div>
-
-        <div class='spend__item__content__desc p-2'>
-          <h4>午餐</h4>
-          <p>2019/04/23</p>
-        </div>
-      </div>
-
-      <div class='spend__item__content__number pe-3'>
-        <h6>60</h6>
-      </div></div>
-    <div class='spend__item__link p-3'>
-      <a href='/' class='link-dark'>修改</a>
-      <a href='/' class='link-dark'>刪除</a>
-    </div>
-  </div>
-
+  {{/each}}
   <a class='btn btn-primary m-3' href='/new' role='button'>新增支出</a>
 
 </main>
