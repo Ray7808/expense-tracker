@@ -1,46 +1,44 @@
-{
-  "results": [
-    {
-      "id": 1,
-      "name": "去美國",
-      "date": "2023-03-14",
-      "amount": 120,
-      "category": 2
-    },
-    {
-      "id": 1,
-      "name": "零食",
-      "date": "2023-02-04",
-      "amount": 100,
-      "category": 4
-    },
-    {
-      "id": 1,
-      "name": "零嘴",
-      "date": "2023-01-04",
-      "amount": 1023,
-      "category": 4
-    },
-    {
-      "id": 2,
-      "name": "租金",
-      "date": "2023-02-04",
-      "amount": 1030,
-      "category": 1
-    },
-    {
-      "id": 2,
-      "name": "零食",
-      "date": "2023-02-04",
-      "amount": 1200,
-      "category": 4
-    },
-    {
-      "id": 2,
-      "name": "飲料",
-      "date": "2023-12-05",
-      "amount": 120,
-      "category": 4
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "name": "去美國",
+    "date": "2023-03-14",
+    "amount": 120,
+    "category": 2
+  },
+  {
+    "id": 1,
+    "name": "零食",
+    "date": "2023-02-04",
+    "amount": 100,
+    "category": 4
+  },
+  {
+    "id": 1,
+    "name": "零嘴",
+    "date": "2023-01-04",
+    "amount": 1023,
+    "category": 4
+  },
+  {
+    "id": 2,
+    "name": "租金",
+    "date": "2023-02-04",
+    "amount": 1030,
+    "category": 1
+  },
+  {
+    "id": 2,
+    "name": "零食",
+    "date": "2023-02-04",
+    "amount": 1200,
+    "category": 4
+  },
+  {
+    "id": 2,
+    "name": "飲料",
+    "date": "2023-12-05",
+    "amount": 120,
+    "category": 4
+  }
+]
