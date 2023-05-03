@@ -5,23 +5,21 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
-const CATEGORY = {
-  家居物業: 'https://fontawesome.com/icons/home?style=solid',
-  交通出行: 'https://fontawesome.com/icons/shuttle-van?style=solid',
-  休閒娛樂: 'https://fontawesome.com/icons/grin-beam?style=solid',
-  餐飲食品: 'https://fontawesome.com/icons/utensils?style=solid',
-  其他: 'https://fontawesome.com/icons/pen?style=solid',
-}
+const CATEGORY = [
+  { name: '家居物業', iconUrl: 'https://fontawesome.com/icons/home?style=solid' },
+  { name: '交通出行', iconUrl: 'https://fontawesome.com/icons/shuttle-van?style=solid' },
+  { name: '休閒娛樂', iconUrl: 'https://fontawesome.com/icons/grin-beam?style=solid' },
+  { name: '餐飲食品', iconUrl: 'https://fontawesome.com/icons/utensils?style=solid' },
+  { name: '其他', iconUrl: 'https://fontawesome.com/icons/pen?style=solid' },
+]
 
 db.once('open', () => {
-  for (const item in CATEGORY) {
-    categoryInfo
-      .create({
-        name: `${item}`,
-        iconUrl: `${CATEGORY[item]}`,
-      })
-      .catch((err) => console.log(err))
-  }
-
-  console.log('done!')
+  Promise.all(
+    CATEGORY.map((item) => {
+      return categoryInfo.create({ name: `${item.name}`, iconUrl: `${item.iconUrl}` })
+    })
+  ).then(() => {
+    console.log('done!')
+    process.exit()
+  })
 })
