@@ -14,11 +14,14 @@ const CATEGORY = [
 ]
 
 db.once('open', () => {
+  // 利用promise all 一次建立每個category information
   Promise.all(
     CATEGORY.map((item) => {
       return categoryInfo.create({ name: `${item.name}`, iconUrl: `${item.iconUrl}` })
     })
   ).then(() => {
+    // 全部完成就中止這隻程式
+
     console.log('done!')
     process.exit()
   })

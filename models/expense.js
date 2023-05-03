@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const recordSchema = new mongoose.Schema({
+const expenseSchema = new mongoose.Schema({
   //設置餐廳的各個資訊
   name: {
     type: String,
@@ -29,4 +29,4 @@ const recordSchema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('recordInfo', recordSchema)
+module.exports = mongoose.model('expenseInfo', expenseSchema)
