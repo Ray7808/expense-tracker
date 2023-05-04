@@ -14,6 +14,8 @@ router.get('/', (req, res) => {
     .then((expense) => {
       expense.map((eachExpense) => {
         totalAmount += eachExpense.amount
+        const eachExpenseDate = eachExpense.date.toLocaleDateString()
+        eachExpense['expenseDate'] = eachExpenseDate
 
         categoryInfo
           .find({ _id: eachExpense.categoryId })

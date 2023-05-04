@@ -24,7 +24,7 @@
     <div class='spend__item container d-flex justify-content-between align-items-center'>
       <div class='spend__item__content d-flex flex-row align-items-center justify-content-between'>
         <div class='spend__item__content__desc d-flex flex-row align-items-center'>
-          <div class='spend__item__content__desc__img ps-3'>
+          <div class='spend__item__content__desc__img px-3'>
             {{! <i class='fa-solid fa-utensils fa-2xl' style='color: #53afc6;'></i> }}
             <i class='{{this.categoryClass}} fa-2xl' style='color: #53afc6;'></i>
 
@@ -32,16 +32,16 @@
 
           <div class='spend__item__content__desc p-2'>
             <h4>{{this.name}}</h4>
-            <p>{{this.date}}</p>
+            <p>{{this.expenseDate}}</p>
           </div>
         </div>
 
         <div class='spend__item__content__number pe-3'>
-          <h6>{{this.amount}}</h6>
+          <h5>{{this.amount}}</h5>
         </div></div>
       <div class='spend__item__link p-3'>
-        <a href='/expense/{{this._id}}/edit' class='link-dark'>修改</a>
-        <a href='/expense/{{this._id}}/delete' class='link-dark'>刪除</a>
+        <a href='/expense/{{this._id}}/edit' class='link-dark p-2'>修改</a>
+        <a href='/expense/{{this._id}}/delete' class='link-dark p-2'>刪除</a>
       </div>
     </div>
   {{/each}}
