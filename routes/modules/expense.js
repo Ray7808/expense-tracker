@@ -31,15 +31,26 @@ router.post('/new', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   const _id = req.params.id
   const userId = req.user._id
+
   return expenseInfo
     .findOne({ _id, userId })
     .lean()
     .then((expense) => {
-      res.render('edit', { expense, _id })
+      const expenseDate = expense.date.toLocaleDateString()
+      expense['expenseDate'] = expenseDate
+
+      return categoryInfo
+        .findOne({ _id: expense.categoryId })
+        .lean()
+        .then((category) => {
+          expense['category'] = category.name
+
+          res.render('edit', { expense, _id })
+        })
     })
 })
 
-router.post('/:id/edit', (req, res) => {
+router.put('/:id/edit', (req, res) => {
   //根據動態路由輸入的id，將編輯後的資料傳至mongoDB並重新導向到index.hbs
   const _id = req.params.id
   const userId = req.user._id
@@ -57,6 +68,16 @@ router.post('/:id/edit', (req, res) => {
     })
     .then(() => res.redirect(`/`))
     .catch((error) => console.log(error))
+})
+
+router.delete('/:id/delete', (req, res) => {
+  const _id = req.params.id
+  const userId = req.user._id
+
+  return expenseInfo
+    .findOne({ _id, userId })
+    .then((expense) => expense.deleteOne())
+    .then(() => res.redirect('/'))
 })
 
 module.exports = router

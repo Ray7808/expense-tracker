@@ -1,7 +1,7 @@
-<form action='/expense/{{_id}}/edit' method='POST' class='container p-3 d-flex flex-column form__content'>
+<form action='/expense/{{_id}}/edit?_method=PUT' method='POST' class='container p-3 d-flex flex-column form__content'>
   <div class='mb-3 d-flex align-items-center form__content__desc'>
     <label for='inputName' class='px-2 flex-shrink-0'>必填欄位</label>
-    <div class='flex-grow-1'>請修改你的支出</div>
+    <div class='flex-grow-1'>請修改或刪除你的支出</div>
   </div>
 
   <div class='mb-3 d-flex align-items-center form__content__content'>
@@ -13,7 +13,7 @@
   <div class='mb-3 d-flex align-items-center form__content__content'>
     <label for='inputDate' class='form-label flex-shrink-0 ps-2'>日期</label>
     <label for='inputDate' class='form-label flex-shrink-0 pe-2'>：</label>
-    <input type='month' class='form-control' name='date' id='inputDate' aria-describedby='emailHelp' value='{{expense.date}}' required />
+    <input type='date' class='form-control' name='date' id='inputDate' aria-describedby='emailHelp' value='{{expense.expenseDate}}' required />
   </div>
 
   <div class='mb-3 d-flex align-items-center form__content__content'>
@@ -36,3 +36,32 @@
 
   <button type='submit' class='btn btn-primary form__content__button'>送出</button>
 </form>
+
+<div class='container d-flex flex-column form__content'>
+  <button type='button' class='btn btn-danger form__content__button' data-bs-toggle='modal' data-bs-target='#deleteModalLabel'>
+    刪除
+  </button>
+</div>
+
+<div class='modal fade' id='deleteModalLabel' tabindex='-1' aria-labelledby='deleteModalLabel' aria-hidden='true'>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h1 class='modal-title fs-5' id='deleteModalLabel'>你確定要刪除此記帳資訊嗎？</h1>
+        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+      </div>
+      <div class='modal-body'>
+        <p class='mb-1'>名稱 : {{expense.name}}</p>
+        <p class='mb-1'>日期 : {{expense.expenseDate}}</p>
+        <p class='mb-1'>類別 : {{expense.category}}</p>
+        <p class='mb-1'>金額 : {{expense.amount}}</p>
+      </div>
+      <div class='modal-footer'>
+        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>返回</button>
+        <form action='/restaurants/{{expense._id}}?_method=DELETE' method='POST'>
+          <button type='submit' class='btn btn-primary'>確認刪除</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
