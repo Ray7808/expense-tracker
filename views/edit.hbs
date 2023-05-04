@@ -1,4 +1,4 @@
-<form action='/{{_id}}/edit' method='POST' class='container p-3 d-flex flex-column form__content'>
+<form action='/expense/{{_id}}/edit' method='POST' class='container p-3 d-flex flex-column form__content'>
   <div class='mb-3 d-flex align-items-center form__content__desc'>
     <label for='inputName' class='px-2 flex-shrink-0'>必填欄位</label>
     <div class='flex-grow-1'>請修改你的支出</div>
@@ -31,7 +31,7 @@
   <div class='mb-3 d-flex align-items-center form__content__content'>
     <label for='inputMoney' class='form-label flex-shrink-0 ps-2'>金額</label>
     <label for='inputMoney' class='form-label flex-shrink-0 pe-2'>：</label>
-    <input type='number' class='form-control' name='money' id='inputMoney' aria-describedby='moneyHelp' value='{{expense.amount}}' required />
+    <input type='number' class='form-control' name='amount' id='inputMoney' aria-describedby='moneyHelp' value='{{expense.amount}}' required />
   </div>
 
   <button type='submit' class='btn btn-primary form__content__button'>送出</button>
