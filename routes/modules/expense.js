@@ -36,17 +36,17 @@ router.get('/:id/edit', (req, res) => {
     .findOne({ _id, userId })
     .lean()
     .then((expense) => {
-      const expenseDate = expense.date.toLocaleDateString()
-      expense['expenseDate'] = expenseDate
+      const categoryClass = expense.categoryClass
 
-      return categoryInfo
-        .findOne({ _id: expense.categoryId })
-        .lean()
-        .then((category) => {
-          expense['category'] = category.name
-
-          res.render('edit', { expense, _id })
-        })
+      res.render('edit', {
+        expense,
+        _id,
+        isHouse: isHouse(categoryClass),
+        isCar: isCar(categoryClass),
+        isPlay: isPlay(categoryClass),
+        isFood: isFood(categoryClass),
+        isOthers: isOthers(categoryClass),
+      })
     })
 })
 
@@ -62,7 +62,7 @@ router.put('/:id/edit', (req, res) => {
         expense.name = req.body.name
         expense.date = req.body.date
         expense.amount = req.body.amount
-        expense.categoryId = category._id
+        expense.categoryClass = category.iconClass
         return expense.save()
       })
     })
@@ -81,3 +81,39 @@ router.delete('/:id/delete', (req, res) => {
 })
 
 module.exports = router
+
+function isHouse(categoryClass) {
+  // 是否為家居物業
+  if (categoryClass === 'fa-solid fa-house') {
+    return true
+  }
+  return false
+}
+function isCar(categoryClass) {
+  // 是否為交通出行
+  if (categoryClass === 'fa-solid fa-van-shuttle') {
+    return true
+  }
+  return false
+}
+function isPlay(categoryClass) {
+  // 是否為休閒娛樂
+  if (categoryClass === 'fa-solid fa-face-grin-beam') {
+    return true
+  }
+  return false
+}
+function isFood(categoryClass) {
+  // 是否為餐飲食品
+  if (categoryClass === 'fa-solid fa-utensils') {
+    return true
+  }
+  return false
+}
+function isOthers(categoryClass) {
+  // 是否為其他
+  if (categoryClass === 'a-solid fa-pen') {
+    return true
+  }
+  return false
+}
