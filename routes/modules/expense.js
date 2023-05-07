@@ -37,6 +37,12 @@ router.get('/:id/edit', (req, res) => {
     .lean()
     .then((expense) => {
       const categoryClass = expense.categoryClass
+      if (expense['expenseDate'] == undefined) {
+        const expenseDate = expense.date.toLocaleDateString()
+        expense['expenseDate'] = expenseDate
+      }
+      const category = whichCategory(expense.categoryClass)
+      expense['category'] = category
 
       res.render('edit', {
         expense,
@@ -116,4 +122,18 @@ function isOthers(categoryClass) {
     return true
   }
   return false
+}
+function whichCategory(categoryClass) {
+  switch (categoryClass) {
+    case 'fa-solid fa-house':
+      return '家居物業'
+    case 'fa-solid fa-van-shuttle':
+      return '交通出行'
+    case 'fa-solid fa-face-grin-beam':
+      return '休閒娛樂'
+    case 'fa-solid fa-utensils':
+      return '餐飲食品'
+    case 'a-solid fa-pen':
+      return '其他'
+  }
 }
