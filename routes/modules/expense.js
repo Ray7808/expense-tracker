@@ -15,13 +15,13 @@ router.post('/new', (req, res) => {
     .find({ name: `${category}` })
     .lean()
     .then((categoryContent) => {
-      const categoryId = categoryContent[0]._id
+      const categoryClass = categoryContent[0].iconClass
       return expenseInfo.create({
         name: `${req.body.name}`,
         date: `${req.body.date}`,
         amount: `${req.body.amount}`,
         userId,
-        categoryId,
+        categoryClass,
       })
     })
     .then(() => res.redirect('/'))

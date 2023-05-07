@@ -62,13 +62,13 @@ db.once('open', () => {
             .find({ name: `${category}` })
             .lean()
             .then((categoryContent) => {
-              const categoryId = categoryContent[0]._id
+              const categoryClass = categoryContent[0].iconClass
               expenseInfo.create({
                 name: `${expense.name}`,
                 date: expense.date,
                 amount: expense.amount,
                 userId,
-                categoryId,
+                categoryClass,
               })
             })
             .catch((err) => console.log(err))

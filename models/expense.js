@@ -21,11 +21,9 @@ const expenseSchema = new mongoose.Schema({
     required: true,
     index: true,
   },
-  categoryId: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category',
+  categoryClass: {
+    type: String,
     required: true,
-    index: true,
   },
 })
 

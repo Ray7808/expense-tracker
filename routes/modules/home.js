@@ -13,17 +13,10 @@ router.get('/', (req, res) => {
     .then((expense) => {
       expense.map((eachExpense) => {
         totalAmount += eachExpense.amount
-        const eachExpenseDate = eachExpense.date.toLocaleDateString()
-        eachExpense['expenseDate'] = eachExpenseDate
-
-        categoryInfo
-          .find({ _id: eachExpense.categoryId })
-          .lean()
-          .then((category) => {
-            const categoryClass = category[0].iconClass
-
-            eachExpense['categoryClass'] = categoryClass
-          })
+        if (eachExpense['expenseDate'] == undefined) {
+          const eachExpenseDate = eachExpense.date.toLocaleDateString()
+          eachExpense['expenseDate'] = eachExpenseDate
+        }
       })
       return expense
     })
