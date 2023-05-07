@@ -32,86 +32,41 @@ router.get('/sort/:sortingMethod', (req, res) => {
   //藉由輸入的query string，排序對應的花費資訊
   const userId = req.user._id
   const sortingMethod = req.params.sortingMethod
+  const category = selectedCategory(sortingMethod)
+  let totalAmount = 0
 
-  switch (sortingMethod) {
-    case 'home':
-      return categoryInfo
-        .find({ name: '家居物業' })
-        .lean()
-        .then((category) => {
-          return expenseInfo
-            .find({ userId, categoryId: category._id })
-            .lean()
-            .then((expense) => {
-              console.log(expense)
-
-              res.render('index', { expense: expense })
-            })
-            .catch((error) => console.log(error))
-        })
-
-    case 'car':
-      return categoryInfo
-        .find({ name: '交通出行' })
-        .lean()
-        .then((category) => {
-          return expenseInfo
-            .find({ userId, categoryId: category._id })
-            .lean()
-            .then((expenses) => {
-              console.log(expenses)
-
-              res.render('index', { expense: expenses })
-            })
-            .catch((error) => console.log(error))
-        })
-
-    case 'play':
-      return categoryInfo
-        .find({ name: '休閒娛樂' })
-        .lean()
-        .then((category) => {
-          return expenseInfo
-            .find({ userId, categoryId: category._id })
-            .lean()
-            .then((expenses) => {
-              console.log(expenses)
-
-              res.render('index', { expense: expenses })
-            })
-            .catch((error) => console.log(error))
-        })
-
-    case 'food':
-      return categoryInfo
-        .find({ name: '餐飲食品' })
-        .lean()
-        .then((category) => {
-          return expenseInfo
-            .find({ userId, categoryId: category._id })
-            .lean()
-            .then((expenses) => {
-              console.log(expenses)
-              res.render('index', { expense: expenses })
-            })
-            .catch((error) => console.log(error))
-        })
-    case 'others':
-      return categoryInfo
-        .find({ name: '其他' })
-        .lean()
-        .then((category) => {
-          return expenseInfo
-            .find({ userId, categoryId: category._id })
-            .lean()
-            .then((expenses) => {
-              console.log(expenses)
-
-              res.render('index', { expense: expenses })
-            })
-            .catch((error) => console.log(error))
-        })
-  }
+  return expenseInfo
+    .find({ userId, categoryClass: category })
+    .lean()
+    .then((expense) => {
+      expense.map((eachExpense) => {
+        totalAmount += eachExpense.amount
+        if (eachExpense['expenseDate'] == undefined) {
+          const eachExpenseDate = eachExpense.date.toLocaleDateString()
+          eachExpense['expenseDate'] = eachExpenseDate
+        }
+      })
+      return expense
+    })
+    .then((expense) => {
+      res.render('index', { expense, totalAmount })
+    })
+    .catch((error) => console.log(error))
 })
 
 module.exports = router
+
+function selectedCategory(sortingMethod) {
+  switch (sortingMethod) {
+    case 'home':
+      return 'fa-solid fa-house'
+    case 'car':
+      return 'fa-solid fa-van-shuttle'
+    case 'play':
+      return 'fa-solid fa-face-grin-beam'
+    case 'food':
+      return 'fa-solid fa-utensils'
+    case 'others':
+      return 'fa-solid fa-pen'
+  }
+}
