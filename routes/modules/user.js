@@ -8,13 +8,24 @@ const bcrypt = require('bcryptjs')
 router.get('/login', (req, res) => {
   res.render('login')
 })
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/users/login',
-  })
-)
+router.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
+    if (err) {
+      return next(err) // will generate a 500 error
+    }
+    // Generate a JSON response reflecting authentication status
+    if (!user) {
+      req.flash('warning_msg', '請重新輸入正確的內容')
+      return res.redirect('/users/login')
+    }
+    req.login(user, function (err) {
+      if (err) {
+        return next(err)
+      }
+      return res.redirect('/')
+    })
+  })(req, res, next)
+})
 
 router.get('/register', (req, res) => {
   res.render('register')
